@@ -8,4 +8,5 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
   integrations: [tailwind(), react(), svelte()],
   output: 'static',
+  site: 'https://coffee.creare.dev',
 });

@@ -1,15 +1,6 @@
 {
   "name": "coffee-calc",
-  "type": "module",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "add-component": "bunx shadcn@latest add"
-  },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@astrojs/react": "^3.6.2",
@@ -31,7 +22,13 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.6.2"
   },
-  "devDependencies": {
-    "wrangler": "^3.78.12"
-  }
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "add-component": "bunx shadcn@latest add"
+  },
+  "type": "module"
 }

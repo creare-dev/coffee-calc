@@ -30,5 +30,8 @@
     "astro": "astro",
     "add-component": "bunx shadcn@latest add"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.22.5"
+  },
   "type": "module"
 }

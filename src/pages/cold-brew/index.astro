@@ -1,12 +1,12 @@
 ---
-import "@/styles/globals.postcss";
+import "@/styles/calculators.postcss";
 import Layout from "@/layouts/Layout.astro";
 import ColdBrewCalc from "@/components/ColdBrewCalc.svelte";
 ---
 
 <Layout title="Cold Brew Calculator">
   <main>
-    <a class="link" href="/">&larr; Back</a>
+    <a class="link back" href="/">Back</a>
     <h1>Cold Brew</h1>
     <ColdBrewCalc client:only="svelte" />
   </main>
@@ -18,7 +18,7 @@ import ColdBrewCalc from "@/components/ColdBrewCalc.svelte";
     padding: 1rem;
     width: 800px;
     max-width: calc(100% - 2rem);
-    color: white;
+    /* color: white; */
     font-size: 20px;
     line-height: 1.6;
   }

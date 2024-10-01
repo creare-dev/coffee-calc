@@ -1,18 +1,35 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  const storageKey = "coldBrew";
+  export let storageKey;
 
-  let cupCount = 8;
-  let ratio = 10;
-  let gramsPerCup = 17.5;
+  export let defaults: {
+    cupCount: number;
+    ratio: number;
+    gramsPerCup: number;
+  }; // = { cupCount: 8, ratio: 12, gramsPerCup: 17.5 }
+  let cupCount;
+  //   let cupCount = 8;
+  let ratio;
+  //   let ratio = 10;
+  let gramsPerCup;
+  //   let gramsPerCup = 17.5;
   const isBrowser = typeof window !== "undefined";
   onMount(() => {
-    if (localStorage[storageKey]) {
-      const values = JSON.parse(localStorage[storageKey]);
-      if (values) {
-        ({ cupCount, ratio, gramsPerCup } = values);
+    try {
+      if (localStorage[storageKey]) {
+        const values = JSON.parse(localStorage[storageKey]);
+        if (values) {
+          ({ cupCount, ratio, gramsPerCup } = values);
+        } else {
+          throw new Error("Invalid Data");
+        }
+      } else {
+        throw new Error("No Data");
       }
+    } catch (e) {
+      console.log({ e });
+      ({ cupCount, ratio, gramsPerCup } = { ...defaults });
     }
   });
   const update = () => {
@@ -23,7 +40,6 @@
         gramsPerCup,
       });
   };
-  // $: console.log({ isBrowser: isBrowser });
 </script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -87,3 +103,25 @@
     </div>
   </div>
 </div>
+
+<style lang="postcss">
+  .output {
+    @apply flex flex-col flex-1 justify-between gap-1;
+  }
+  .output > div {
+    @apply rounded-md w-full h-full place-items-center flex flex-row justify-between odd:bg-accent-d/50 even:bg-accent-d/25 w-full text-primary-l dark:text-primary-d;
+  }
+  .output > div > div {
+    @apply w-fit p-2;
+  }
+  label {
+    @apply text-center text-primary-l dark:text-primary-d;
+  }
+  input[type="range"] {
+    @apply appearance-none my-5 w-4/5 mx-auto h-1 bg-surface-d/25 dark:bg-surface-l/25 rounded-sm accent-surface-d dark:accent-surface-l;
+  }
+  input[type="range"]::-moz-range-thumb,
+  input[type="range"]::-webkit-slider-thumb {
+    @apply bg-surface-d dark:bg-surface-l rounded-full h-4 w-4 border-none;
+  }
+</style>

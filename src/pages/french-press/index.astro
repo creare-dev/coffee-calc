@@ -4,32 +4,29 @@ import Layout from "@/layouts/Layout.astro";
 import Calc from "@/components/Calc.svelte";
 ---
 
-<Layout title="Pour Over Calculator">
+<Layout title="French Press Calculator">
   <main>
     <a class="link back" href="/">Back</a>
-    <h1>Pour Over</h1>
+    <h1>French Press</h1>
     <Calc
       client:only="svelte"
       storageKey="frenchPress"
       defaults={{
         cupCount: 2,
-        ratio: 16,
-        gramsPerCup: 18,
+        ratio: 12,
+        gramsPerCup: 15,
       }}
     />
   </main>
 </Layout>
 
 <style>
-  input[type="number"] {
-    color: black;
-  }
   main {
     margin: auto;
     padding: 1rem;
     width: 800px;
     max-width: calc(100% - 2rem);
-    color: white;
+    /* color: white; */
     font-size: 20px;
     line-height: 1.6;
   }
